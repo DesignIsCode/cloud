@@ -6,23 +6,28 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="server" />
+        <module name="entity" />
         <module name="service-zuul" />
         <module name="server-feign" />
         <module name="server-ribbon" />
-        <module name="cloud" />
-        <module name="oauth2one" />
+        <module name="oauth" />
+        <module name="server" />
         <module name="client" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="ddddd" target="1.8" />
+      <module name="oauth2" target="1.8" />
+      <module name="oauth2one" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="client" options="-parameters" />
       <module name="ddddd" options="-parameters" />
+      <module name="entity" options="-parameters" />
+      <module name="oauth" options="-parameters" />
+      <module name="oauth2" options="-parameters" />
       <module name="oauth2one" options="-parameters" />
       <module name="server" options="-parameters" />
       <module name="server-feign" options="-parameters" />
