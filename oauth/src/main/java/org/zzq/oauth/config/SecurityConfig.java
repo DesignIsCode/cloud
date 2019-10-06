@@ -13,12 +13,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable();
+
+        //http.csrf().disable();
         http.requestMatchers()
-                .antMatchers("/oauth/**","/login","/login-error")
+                .antMatchers("/oauth/**","/")
                 .and()
                 .authorizeRequests()
-                .antMatchers("/oauth/**").authenticated()
+                .antMatchers("/oauth/**","/**").authenticated()
                 .and()
                 .formLogin().loginPage( "/login" ).failureUrl( "/login-error" );
     }
@@ -30,4 +31,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .withUser("user").password(new BCryptPasswordEncoder().encode("user")).roles("USER").and()
                 .withUser("admin").password(new BCryptPasswordEncoder().encode("admin")).roles("USER","ADMIN");
     }
+
+
 }

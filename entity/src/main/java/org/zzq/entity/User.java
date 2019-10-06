@@ -10,7 +10,6 @@ public class User implements UserDetails, Serializable {
     private Long id;
     private String username;
     private String password;
-    private String salt;
     private String remark;
 
     private List<Role> authorities;
@@ -82,14 +81,6 @@ public class User implements UserDetails, Serializable {
         this.password = password;
     }
 
-    public void setSalt(String salt) {
-        this.salt = salt;
-    }
-
-    public String getSalt() {
-        return salt;
-    }
-
     public void setRemark(String remark) {
         this.remark = remark;
     }
@@ -108,7 +99,6 @@ public class User implements UserDetails, Serializable {
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", salt='" + salt + '\'' +
                 ", remark='" + remark + '\'' +
                 ", authorities=" + authorities +
                 '}';
