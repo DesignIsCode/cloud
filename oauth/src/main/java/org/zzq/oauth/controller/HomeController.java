@@ -10,14 +10,14 @@ public class HomeController {
 
     @RequestMapping("/admin")
     @ResponseBody
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String printAdmin() {
         return "如果你看见这句话，说明你有ADMIN角色";
     }
 
     @RequestMapping("/user")
     @ResponseBody
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasRole('ROLE_USER')")
     public String printUser() {
         return "如果你看见这句话，说明你有USER角色";
     }

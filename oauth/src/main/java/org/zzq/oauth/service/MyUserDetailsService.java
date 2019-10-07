@@ -33,12 +33,13 @@ public class MyUserDetailsService implements UserDetailsService {
         }
 
         // 添加权限
-        Collection<GrantedAuthority> authorities = new ArrayList<>();
-        for (Role userRole : (List<Role>)user.getAuthorities()) {
-            authorities.add(new SimpleGrantedAuthority(userRole.getName()));
-        }
-        System.out.println(user);
-        return new org.springframework.security.core.userdetails.User(user.getUsername(),user.getPassword(),
-                authorities);
+//        Collection<GrantedAuthority> authorities = new ArrayList<>();
+//        for (Role userRole : (List<Role>)user.getAuthorities()) {
+//            authorities.add(new SimpleGrantedAuthority(userRole.getName()));
+//        }
+//        System.out.println(user);
+//        return new org.springframework.security.core.userdetails.User(user.getUsername(),user.getPassword(),
+//                authorities);
+        return user;
     }
 }
