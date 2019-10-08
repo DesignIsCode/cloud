@@ -7,8 +7,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.zzq.entity.Role;
-import org.zzq.entity.User;
+import org.zzq.oauth.entity.Role;
+import org.zzq.oauth.entity.User;
 import org.zzq.oauth.mapper.RoleMapper;
 import org.zzq.oauth.mapper.UserMapper;
 

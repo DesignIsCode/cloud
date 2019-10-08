@@ -2,7 +2,7 @@ package org.zzq.oauth.mapper;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
-import org.zzq.entity.Role;
+import org.zzq.oauth.entity.Role;
 
 import java.util.List;
 

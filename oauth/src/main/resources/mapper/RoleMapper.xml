@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.zzq.oauth.mapper.RoleMapper">
-    <resultMap id="roleMap" type="org.zzq.entity.Role">
+    <resultMap id="roleMap" type="org.zzq.oauth.entity.Role">
         <id column="id" javaType="Long" property="id" jdbcType="BIGINT"></id>
         <result column="name" javaType="String" property="name" jdbcType="VARCHAR"></result>
     </resultMap>
