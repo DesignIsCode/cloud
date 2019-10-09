@@ -1,11 +1,13 @@
 package org.zzq.entity;
 
+import org.apache.ibatis.type.Alias;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
+@Alias("user")
 public class User implements UserDetails, Serializable {
     private Long id;
     private String username;

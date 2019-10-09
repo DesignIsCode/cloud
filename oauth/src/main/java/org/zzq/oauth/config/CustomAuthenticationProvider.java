@@ -8,6 +8,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -40,7 +41,9 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         // userDetails为数据库中查询到的用户信息
         UserDetails userDetails = myUserDetailsService.loadUserByUsername(inputName);
 
-        System.out.println(userDetails.getUsername() + "--" + userDetails.getPassword());
+        if (null == userDetails){
+            throw new UsernameNotFoundException("用户不存在");
+        }
 
         // 如果是自定义AuthenticationProvider，需要手动密码校验
 //        if(!userDetails.getPassword().equals(inputPassword)) {

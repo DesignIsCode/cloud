@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zzq.oauth.mapper.PermissionMapper">
+    <resultMap id="permissionMap" type="org.zzq.entity.Permission">
+        <id column="id" javaType="Long" property="id" jdbcType="BIGINT"></id>
+        <result column="url" javaType="String" property="url" jdbcType="VARCHAR"></result>
+        <result column="name" javaType="String" property="name" jdbcType="VARCHAR"></result>
+        <result column="description" javaType="String" property="description" jdbcType="VARCHAR"></result>
+        <result column="permission" javaType="String" property="permission" jdbcType="VARCHAR"></result>
+        <result column="pid" javaType="Long" property="pid" jdbcType="BIGINT"></result>
+    </resultMap>
+
+    <select id="listByRoleId" resultMap="permissionMap">
+        select A.id,A.url,A.name,A.description,A.permission,A.pid from permission A left join role_permission B on A.id = B.permission_id
+        <where>
+            <if test="null != roleId">
+                B.role_id = #{roleId}
+            </if>
+        </where>
+    </select>
+</mapper>

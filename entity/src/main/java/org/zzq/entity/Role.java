@@ -1,7 +1,9 @@
 package org.zzq.entity;
 
+import org.apache.ibatis.type.Alias;
 import org.springframework.security.core.GrantedAuthority;
 
+@Alias("role")
 public class Role implements GrantedAuthority {
     private Long id;
     private String name;

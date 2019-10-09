@@ -1,10 +1,18 @@
 package org.zzq.entity;
 
+import org.apache.ibatis.type.Alias;
+
+import java.util.Arrays;
+import java.util.List;
+
+@Alias("permission")
 public class Permission {
     private Long id;
     private String url;
     private String name;
     private String description;
+    private String permission;
+    private List<String> permissions;
     private Long pid;
 
     public void setId(Long id) {
@@ -47,5 +55,19 @@ public class Permission {
         return pid;
     }
 
+    public void setPermission(String permission) {
+        this.permission = permission;
+    }
 
+    public String getPermission() {
+        return permission;
+    }
+
+    public void setPermissions(List<String> permissions) {
+        this.permissions = permissions;
+    }
+
+    public List<String> getPermissions() {
+        return Arrays.asList(this.permission.trim().split(","));
+    }
 }

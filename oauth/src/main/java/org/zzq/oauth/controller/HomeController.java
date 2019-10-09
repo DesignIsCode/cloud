@@ -22,5 +22,11 @@ public class HomeController {
         return "如果你看见这句话，说明你有USER角色";
     }
 
+    @RequestMapping("/oauth/r")
+    @ResponseBody
+    @PreAuthorize("hasPermission('/oauth','r')")
+    public String printOauthR(){
+        return "如果你看见这句话，说明你访问/oauth路径具有r权限";
+    }
 
 }
