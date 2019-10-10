@@ -6,9 +6,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.zzq.oauth.servlet.VerifyServlet;
 
 @SpringBootApplication
+@EnableTransactionManagement
 @MapperScan("org.zzq.oauth.mapper")
 public class OauthApplication {
 
