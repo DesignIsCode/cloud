@@ -6,6 +6,15 @@
     <resultMap id="roleMap" type="org.zzq.entity.Role">
         <id column="id" javaType="Long" property="id" jdbcType="BIGINT"></id>
         <result column="name" javaType="String" property="name" jdbcType="VARCHAR"></result>
+        <collection property="permissions" javaType="ArrayList" column="id" ofType="permission"
+                    select="org.zzq.oauth.mapper.PermissionMapper.listByRoleId" fetchType="lazy">
+            <id column="id" javaType="Long" property="id" jdbcType="BIGINT"></id>
+            <result column="url" javaType="String" property="url" jdbcType="VARCHAR"></result>
+            <result column="name" javaType="String" property="name" jdbcType="VARCHAR"></result>
+            <result column="description" javaType="String" property="description" jdbcType="VARCHAR"></result>
+            <result column="permission" javaType="String" property="permission" jdbcType="VARCHAR"></result>
+            <result column="pid" javaType="Long" property="pid" jdbcType="BIGINT"></result>
+        </collection>
     </resultMap>
 
     <select id="getRolesByUserId" resultMap="roleMap">
@@ -24,5 +33,9 @@
                 name = #{roleName}
             </if>
         </where>
+    </select>
+
+    <select id="getRoleWithPermissions" resultMap="roleMap">
+        select id, name from role
     </select>
 </mapper>
