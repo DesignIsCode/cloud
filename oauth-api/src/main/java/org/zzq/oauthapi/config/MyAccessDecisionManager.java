@@ -1,4 +1,4 @@
-package org.zzq.oauth.oauthConfig;
+package org.zzq.oauthapi.config;
 
 import org.springframework.security.access.AccessDecisionManager;
 import org.springframework.security.access.AccessDeniedException;
@@ -11,6 +11,9 @@ import org.springframework.stereotype.Component;
 import java.util.Collection;
 import java.util.Iterator;
 
+/**
+ * 决策器
+ */
 //@Component
 public class MyAccessDecisionManager implements AccessDecisionManager {
 
@@ -56,4 +59,5 @@ public class MyAccessDecisionManager implements AccessDecisionManager {
     public boolean supports(Class<?> aClass) {
         return true;
     }
+
 }

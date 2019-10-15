@@ -1,4 +1,4 @@
-package org.zzq.oauth.oauthConfig;
+package org.zzq.oauthapi.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -12,17 +12,16 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.provider.error.WebResponseExceptionTranslator;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
-import org.zzq.oauth.service.MyUserDetailsService;
+import org.zzq.oauthapi.service.MyUserDetailsService;
 
 import javax.sql.DataSource;
 
 /**
  * 认证服务器配置
  */
-//@Configuration
-//@EnableAuthorizationServer
+@Configuration
+@EnableAuthorizationServer
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
-
     /**
      * 注入权限验证控制器 来支持 password grant type
      */
@@ -64,6 +63,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+        System.out.println(" in dddd");
         clients.jdbc(dataSource);
     }
 
@@ -78,6 +78,4 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
         //要使用refresh_token的话，需要额外配置userDetailsService
         endpoints.userDetailsService( userDetailsService );
     }
-
-
 }

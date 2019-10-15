@@ -11,6 +11,7 @@
         <module name="server-feign" />
         <module name="server-ribbon" />
         <module name="oauth" />
+        <module name="oauth-api" />
         <module name="server" />
         <module name="client" />
       </profile>
@@ -27,6 +28,7 @@
       <module name="ddddd" options="-parameters" />
       <module name="entity" options="-parameters" />
       <module name="oauth" options="-parameters" />
+      <module name="oauth-api" options="-parameters" />
       <module name="oauth2" options="-parameters" />
       <module name="oauth2one" options="-parameters" />
       <module name="server" options="-parameters" />

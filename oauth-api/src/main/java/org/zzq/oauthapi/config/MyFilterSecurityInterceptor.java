@@ -1,4 +1,4 @@
-package org.zzq.oauth.oauthConfig;
+package org.zzq.oauthapi.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.SecurityMetadataSource;
@@ -16,8 +16,9 @@ import java.io.IOException;
 //@Component
 public class MyFilterSecurityInterceptor extends AbstractSecurityInterceptor implements Filter {
 
+
     @Autowired
-    private FilterInvocationSecurityMetadataSource filterInvocationSecurityMetadataSource;
+    private FilterInvocationSecurityMetadataSource securityMetadataSource;
 
     @Autowired
     public void setMyAccessDecisionManager(MyAccessDecisionManager myAccessDecisionManager) {
@@ -37,7 +38,7 @@ public class MyFilterSecurityInterceptor extends AbstractSecurityInterceptor imp
         if (!request.getRequestURI().equals("/oauth/token")) {
             invoke(fi);
         }
-
+        System.out.println("in doFilter");
     }
 
     public void invoke(FilterInvocation fi) throws IOException, ServletException {
@@ -58,6 +59,8 @@ public class MyFilterSecurityInterceptor extends AbstractSecurityInterceptor imp
     @Override
     public SecurityMetadataSource obtainSecurityMetadataSource() {
 
-        return this.filterInvocationSecurityMetadataSource;
+        return this.securityMetadataSource;
     }
+
+
 }

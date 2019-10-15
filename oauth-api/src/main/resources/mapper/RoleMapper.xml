@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zzq.oauthapi.mapper.RoleMapper">
+    <resultMap id="roleMap" type="org.zzq.entity.Role">
+        <id column="id" javaType="Long" property="id" jdbcType="BIGINT"></id>
+        <result column="name" javaType="String" property="name" jdbcType="VARCHAR"></result>
+        <collection property="permissions" javaType="ArrayList" column="id" ofType="permission"
+                    select="org.zzq.oauthapi.mapper.PermissionMapper.listByRoleId" fetchType="lazy">
+            <id column="id" javaType="Long" property="id" jdbcType="BIGINT"></id>
+            <result column="url" javaType="String" property="url" jdbcType="VARCHAR"></result>
+            <result column="name" javaType="String" property="name" jdbcType="VARCHAR"></result>
+            <result column="description" javaType="String" property="description" jdbcType="VARCHAR"></result>
+            <result column="permission" javaType="String" property="permission" jdbcType="VARCHAR"></result>
+            <result column="pid" javaType="Long" property="pid" jdbcType="BIGINT"></result>
+        </collection>
+    </resultMap>
+
+    <select id="getRolesByUserId" resultMap="roleMap">
+        select A.id,A.name from role A left join user_role B on A.id = B.role_id
+        <where>
+            <if test="null != userId">
+                B.user_id = #{userId}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectByName" resultMap="roleMap">
+        select id,name from role
+        <where>
+            <if test="null != roleName">
+                name = #{roleName}
+            </if>
+        </where>
+    </select>
+
+    <select id="getRoleWithPermissions" resultMap="roleMap">
+        select id, name from role
+    </select>
+</mapper>

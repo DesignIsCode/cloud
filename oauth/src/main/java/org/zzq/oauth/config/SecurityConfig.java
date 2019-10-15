@@ -49,6 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin().loginPage( "/login" ).failureUrl( "/login-error" ).permitAll()
                 .authenticationDetailsSource(authenticationDetailsSource)
                 .and()
+                //如果我们访问受 Spring Security 保护的资源时，系统将会弹出一个窗口来要求我们进行登录认证
                 .httpBasic()
                 .and()
                 .rememberMe()

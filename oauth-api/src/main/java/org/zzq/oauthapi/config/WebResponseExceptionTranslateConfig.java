@@ -1,4 +1,4 @@
-package org.zzq.oauth.oauthConfig;
+package org.zzq.oauthapi.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,8 +27,9 @@ public class WebResponseExceptionTranslateConfig {
                 HttpHeaders headers = new HttpHeaders();
                 headers.setAll(responseEntity.getHeaders().toSingleValueMap());
                 // do something with header or response
+                System.out.println("ffff");
                 if ( 400 == responseEntity.getStatusCode().value() ) {
-                    System.out.println("--" + body.getMessage());
+                    System.out.println(body.getMessage());
                     if ( "Bad credentials".equals(body.getMessage()) ) {
                         return new ResponseEntity("您输入的用户名或密码错误" , headers , HttpStatus.OK);
                     }

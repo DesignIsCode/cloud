@@ -1,4 +1,4 @@
-package org.zzq.oauth.oauthConfig;
+package org.zzq.oauthapi.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -7,11 +7,11 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 
 /**
  * 资源服务器配置
- * 资源提供端的配置
  */
 //@Configuration
 //@EnableResourceServer
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
+
     /**
      * 这里设置需要token验证的url
      * 这些url可以在WebSecurityConfigurerAdapter中排查掉，
@@ -26,5 +26,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/hi").authenticated();
     }
+
 
 }
