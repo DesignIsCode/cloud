@@ -1,13 +1,11 @@
-package org.zzq.oauthapi.service;
+package org.zzq.oauthserver.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import org.zzq.entity.User;
-import org.zzq.oauthapi.mapper.UserMapper;
+import org.zzq.oauthserver.mapper.UserMapper;
 
 @Transactional(rollbackFor = Exception.class)
 @Service

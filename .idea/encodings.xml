@@ -6,6 +6,7 @@
     <file url="file://$PROJECT_DIR$/entity" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/oauth" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/oauth-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/oauth-server" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/server" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/server-feign" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/server-ribbon" charset="UTF-8" />

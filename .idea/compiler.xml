@@ -9,6 +9,7 @@
         <module name="entity" />
         <module name="service-zuul" />
         <module name="server-feign" />
+        <module name="oauth-server" />
         <module name="server-ribbon" />
         <module name="oauth" />
         <module name="oauth-api" />
@@ -29,6 +30,7 @@
       <module name="entity" options="-parameters" />
       <module name="oauth" options="-parameters" />
       <module name="oauth-api" options="-parameters" />
+      <module name="oauth-server" options="-parameters" />
       <module name="oauth2" options="-parameters" />
       <module name="oauth2one" options="-parameters" />
       <module name="server" options="-parameters" />

@@ -10,7 +10,7 @@
     <modules>
         <module>entity</module>
         <module>oauth</module>
-        <module>oauth2</module>
+        <module>oauth-server</module>
     </modules>
     <packaging>pom</packaging>
 
