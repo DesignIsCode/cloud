@@ -10,7 +10,12 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.ClientDetailsService;
+import org.springframework.security.oauth2.provider.approval.ApprovalStore;
+import org.springframework.security.oauth2.provider.approval.JdbcApprovalStore;
 import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
+import org.springframework.security.oauth2.provider.code.JdbcAuthorizationCodeServices;
+import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
@@ -53,6 +58,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         security.allowFormAuthenticationForClients();
     }
 
+    //数据库管理client
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         //添加客户端信息
@@ -78,6 +84,21 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         endpoints.authenticationManager(authenticationManager) // 开启密码验证，来源于 WebSecurityConfigurerAdapter
                 .userDetailsService(myUserDetailsService) // 读取验证用户的信息
                 .tokenStore(tokenStore());
+
+        ClientDetailsService clientDetailsService = new JdbcClientDetailsService(dataSource);
+
+        DefaultTokenServices tokenServices = new DefaultTokenServices();
+        tokenServices.setTokenStore(tokenStore());
+        tokenServices.setReuseRefreshToken(true);
+        tokenServices.setClientDetailsService(clientDetailsService);
+
+        endpoints.tokenServices(tokenServices);
+
+        // 数据库管理授权码
+        endpoints.authorizationCodeServices(new JdbcAuthorizationCodeServices(dataSource));
+        // 数据库管理授权信息
+        ApprovalStore approvalStore = new JdbcApprovalStore(dataSource);
+        endpoints.approvalStore(approvalStore);
     }
 
 }

@@ -13,5 +13,10 @@ public class MainController {
         return "aaa";
     }
 
+    @RequestMapping("/bbb")
+    @ResponseBody
+    public String bbb(){
+        return "bbb";
+    }
 
 }
